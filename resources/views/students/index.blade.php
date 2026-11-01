@@ -1,24 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Students</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    <h1>Student List</h1>
+@section('title', 'Student List')
+
+@section('content')
+
+    <h2>Student List</h2>
 
     @if(session('status'))
-        <p>{{ session('status') }}</p>
+        <p style="color: green;">
+            {{ session('status') }}
+        </p>
     @endif
 
     <a href="{{ route('students.create') }}">Add Student</a>
 
     @foreach($students as $student)
-        <p>
-            {{ $student->name }}
-            <a href="{{ route('students.show', $student->id) }}">View</a>
-        </p>
+
+        <div>
+            <p>Name: {{ $student->name }}</p>
+            <p>Roll Number: {{ $student->roll_no }}</p>
+
+            <a href="{{ route('students.show', $student->id) }}">
+                View Details
+            </a>
+        </div>
+
+        <hr>
+
     @endforeach
 
-</body>
-</html>
+@endsection

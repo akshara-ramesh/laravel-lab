@@ -1,37 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Student</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    <h1>Add Student</h1>
+@section('title', 'Add Student')
+
+@section('content')
+
+    <h2>Add Student</h2>
 
     <form action="{{ route('students.store') }}" method="POST">
 
         @csrf
 
-        Roll Number:
+        <label>Roll Number:</label>
         <input type="text" name="roll_no" required>
         <br><br>
 
-        Name:
+        <label>Name:</label>
         <input type="text" name="name" required>
         <br><br>
 
-        Email:
+        <label>Email:</label>
         <input type="email" name="email" required>
         <br><br>
 
-        Department:
+        <label>Department:</label>
         <input type="text" name="department" value="CSE" required>
         <br><br>
 
-        Semester:
+        <label>Semester:</label>
         <input type="number" name="semester" value="7" required>
         <br><br>
 
-        CGPA:
+        <label>CGPA:</label>
         <input type="number" step="0.01" name="cgpa">
         <br><br>
 
@@ -39,5 +38,4 @@
 
     </form>
 
-</body>
-</html>
+@endsection
