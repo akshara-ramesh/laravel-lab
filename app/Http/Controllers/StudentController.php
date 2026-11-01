@@ -23,6 +23,11 @@ class StudentController extends Controller
     // Save a new student
     public function store(Request $request)
     {
+        $request->merge([
+            'department' => $request->input('department', 'CSE'),
+            'semester' => $request->input('semester', 7),
+        ]);
+
         $validated = $request->validate([
             'roll_no' => 'required|unique:students,roll_no',
             'name' => 'required',
@@ -35,12 +40,15 @@ class StudentController extends Controller
         Student::create($validated);
 
         return redirect()->route('students.index')
-                         ->with('status', 'Student added successfully!');
+                        ->with('status', 'Student added successfully!');
     }
+    
 
     // Display a particular student
     public function show(Student $student)
     {
         return view('students.show', compact('student'));
     }
+
+    
 }

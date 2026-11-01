@@ -6,6 +6,14 @@
 
     <h2>Add Student</h2>
 
+        @if ($errors->any())
+        <div style="color: red;">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+
     <form action="{{ route('students.store') }}" method="POST">
 
         @csrf
